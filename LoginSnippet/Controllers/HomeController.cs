@@ -36,7 +36,7 @@ namespace LoginSnippet.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

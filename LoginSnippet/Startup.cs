@@ -20,7 +20,7 @@ namespace LoginSnippet
         private void CreateRolesandUsers()
         {
             var context = new ApplicationDbContext();
-
+            
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
@@ -31,23 +31,7 @@ namespace LoginSnippet
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
-
-                //Here we create a Admin super user who will maintain the website                  
-
-                var user = new ApplicationUser();
-                user.UserName = "syedshanumcain@gmail.com";
-                user.Email = "syedshanumcain@gmail.com";
-
-                string userPWD = "A@Z200711";
-
-                var chkUser = UserManager.Create(user, userPWD);
-
-                //Add default User to Role Admin   
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
-
-                }
+                
             }
 
             // creating Creating Manager role    

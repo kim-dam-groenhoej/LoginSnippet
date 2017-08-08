@@ -1,0 +1,33 @@
+﻿@model LoginSnippet.ViewModels.UserRolesVM
+@{
+    ViewBag.Title = "AddRoleToUser";
+}
+
+<h2>AddRoleToUser</h2>
+
+@using (Html.BeginForm("AddRoleToUser", "Roles"))
+{
+    <label>Bruger</label>
+    <select>
+        @foreach (var user in Model.Users)
+        {
+            <option name="UserID" value="@user.Id">
+                @user.UserName
+            </option>
+        }
+       
+    </select>
+
+    <label>Rolle</label>
+    <select>
+        @foreach (var role in Model.Roles)
+        {
+            <option name="RoleID" value="@role.Id">
+                @role.Name
+            </option>
+        }
+    </select>
+
+    <button>Tilføj rolle til bruger</button>
+}
+
