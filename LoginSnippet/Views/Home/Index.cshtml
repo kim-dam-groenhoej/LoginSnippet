@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+@using LoginSnippet.Models;
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -12,6 +15,25 @@
     </div>
 }
 
+<div class="users">
+
+    @foreach (var user in (List<ApplicationUser>)ViewBag.Users){
+        <div>
+            <h2>@user.UserName</h2>
+
+            <h4>
+                Roles 
+            </h4>
+            @foreach (var role in user.Roles)
+            {
+                var roleManager = ((RoleManager<IdentityRole>)ViewBag.RoleManager);
+
+                <span>@roleManager.FindById(role.RoleId).Name</span>
+            }
+        </div>
+    }
+
+</div>
 
 <div class="row">
     <div class="col-md-4">

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LoginSnippet.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,12 +9,21 @@ using System.Web.Mvc;
 
 namespace LoginSnippet.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         [AllowAnonymous]
         public ActionResult Index()
         {
+            var context = new ApplicationDbContext();
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+            
+
+            var users = userManager.Users;
+            ViewBag.RoleManager = roleManager;
+            ViewBag.Users = users.ToList();
+
             return View();
         }
 
