@@ -15,7 +15,29 @@
     </div>
 }
 
+@if (User.Identity.IsAuthenticated)
+{
+    var currentUser = ((ApplicationUser)ViewBag.CurrentUser);
+
+    <div class="current user">
+        <br /><br />
+        <h3>Current user</h3>
+        @currentUser.UserName
+
+        <h4>
+            Roles
+        </h4>
+        @foreach (var role in currentUser.Roles)
+        {
+            var roleManager = ((RoleManager<IdentityRole>)ViewBag.RoleManager);
+
+            <span>@roleManager.FindById(role.RoleId).Name</span>
+        }
+    </div>
+}
+
 <div class="users">
+    <h2>All users</h2>
 
     @foreach (var user in (List<ApplicationUser>)ViewBag.Users){
         <div>

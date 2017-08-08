@@ -35,7 +35,7 @@ namespace LoginSnippet
                 //Here we create a Admin super user who will maintain the website                  
 
                 var user = new ApplicationUser();
-                user.UserName = "shanu";
+                user.UserName = "syedshanumcain@gmail.com";
                 user.Email = "syedshanumcain@gmail.com";
 
                 string userPWD = "A@Z200711";
@@ -68,11 +68,13 @@ namespace LoginSnippet
 
 
                 var user = new ApplicationUser();
-                user.UserName = "test";
+                user.UserName = "test@gmail.com";
                 user.Email = "test@gmail.com";
+  
 
-                string userPWD = "sck2002";
+                string userPWD = "SCK2002test!";
                 var chkUser = UserManager.Create(user, userPWD);
+
 
                 //Add default User to Role Admin   
                 if (chkUser.Succeeded)

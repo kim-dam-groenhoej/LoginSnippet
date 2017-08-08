@@ -14,6 +14,7 @@ namespace LoginSnippet.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
+            // all users
             var context = new ApplicationDbContext();
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -23,6 +24,14 @@ namespace LoginSnippet.Controllers
             var users = userManager.Users;
             ViewBag.RoleManager = roleManager;
             ViewBag.Users = users.ToList();
+
+            // Current user
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                var userId = HttpContext.User.Identity.GetUserId();
+                var currentUser = userManager.Users.FirstOrDefault(u => u.Id == userId);
+                ViewBag.CurrentUser = currentUser;
+            }
 
             return View();
         }
