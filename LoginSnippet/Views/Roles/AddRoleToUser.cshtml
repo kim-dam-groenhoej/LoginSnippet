@@ -8,10 +8,10 @@
 @using (Html.BeginForm("AddRoleToUser", "Roles"))
 {
     <label>Bruger</label>
-    <select>
+    <select name="UserID">
         @foreach (var user in Model.Users)
         {
-            <option name="UserID" value="@user.Id">
+            <option  value="@user.Id">
                 @user.UserName
             </option>
         }
@@ -19,10 +19,10 @@
     </select>
 
     <label>Rolle</label>
-    <select>
+    <select  name="RoleID">
         @foreach (var role in Model.Roles)
         {
-            <option name="RoleID" value="@role.Id">
+            <option" value="@role.Id">
                 @role.Name
             </option>
         }
