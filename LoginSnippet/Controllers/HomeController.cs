@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
+using LoginSnippet.Test;
 
 namespace LoginSnippet.Controllers
 {
@@ -19,7 +21,6 @@ namespace LoginSnippet.Controllers
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            
 
             var users = userManager.Users;
             ViewBag.RoleManager = roleManager;
@@ -33,7 +34,14 @@ namespace LoginSnippet.Controllers
                 ViewBag.CurrentUser = currentUser;
             }
 
+       
+
             return View();
+        }
+
+        public void Test2()
+        {
+            
         }
 
         [Authorize(Roles = "Admin")]

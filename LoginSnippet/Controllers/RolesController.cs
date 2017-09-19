@@ -14,6 +14,8 @@ namespace LoginSnippet.Controllers
         // GET: Roles
         public ActionResult Index()
         {
+            
+
             return View();
         }
 
@@ -22,6 +24,7 @@ namespace LoginSnippet.Controllers
             var context = new ApplicationDbContext();
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             roleManager.Create(role);
+          
 
             return View();
         }

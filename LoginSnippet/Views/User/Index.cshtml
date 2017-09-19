@@ -1,0 +1,17 @@
+﻿@model LoginSnippet.ViewModels.UserVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Model.ApplicationUser.Email
+
+<br/>
+
+@foreach (var role in Model.Roles)
+{
+    <div>
+        @role
+    </div>
+}
